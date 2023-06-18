@@ -3,17 +3,18 @@
 namespace App\Modules\Pub\Auth\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Pub\Auth\Request\LoginRequest;
+use App\Services\Response\ResponseServise;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     //
-    public function login(Request $request) {
+    public function login(LoginRequest $request) {
 
-        var_dump($request->all());
-        exit('ku');
-
-        /*$credentials = request(['name','password']);
+        $credentials = request(['email','password']);
 
         if(!Auth::attempt($credentials)) {
             return ResponseServise::sendJsonResponse(
@@ -37,6 +38,6 @@ class LoginController extends Controller
                 'token_type' => 'Bearer',
                 'expires_at' => Carbon::parse($tokenResult->token->expires_at)->toDateTimeString(),
             ]
-        );*/
+        );
     }
 }
